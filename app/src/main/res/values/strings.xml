@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">QuizApp</string>
+    <string name="arithmetic_and_boolean_expressions">Arithmetic and Boolean Expressions</string>
+    <string name="algorithim_and_big_o">Algorithim and Big-O</string>
+    <string name="recursion">Recursion</string>
+    <string name="loops">Loops</string>
+    <string name="arrays">Arrays</string>
+    <string name="arraylist">ArrayList</string>
+    <string name="strings">Strings</string>
+    <string name="fields_methods_and_parameter_passing">Fields, methods and Parameter Passing</string>
+    <string name="classes_interfaces_inheritance_polymorphism">Classes, Interfaces, Inheritance, Polymorphism</string>
+    <string name="search_and_sort">Search and Sort</string>
+    <string name="apcs_quizlit">APCS QuizLit</string>
 </resources>
