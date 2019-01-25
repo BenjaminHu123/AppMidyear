@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QuizApp</string>
+    <string name="app_name">Quizlit</string>
     <string name="arithmetic_and_boolean_expressions">Arithmetic and Boolean Expressions</string>
     <string name="algorithim_and_big_o">Algorithim and Big-O</string>
     <string name="recursion">Recursion</string>
