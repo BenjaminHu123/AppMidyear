@@ -8,6 +8,14 @@ import android.widget.TextView
 
 class Category : AppCompatActivity() {
 
+    /*
+    THIS IS THE STARTING PAGE, FILLED WITH 10 TOPICS, VARIABLES BELOW
+    EACH OF THEM ARE TEXTVIEWS AND THEY HAVE ONCLICKLISTENERS
+    WHEN ONE OF THEM IS CLICKED THE INTENT SENDS A NUMEBR CORRESPONDING TO THE TOPIC
+    0 = ARITHMATIC
+    1 = LOOP ETC
+    YOU USE THIS NUMBER IN THE SECOND ACTIVITY, QUESTIONS
+    */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)

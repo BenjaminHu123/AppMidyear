@@ -11,7 +11,32 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_questions.*
 
 class Questions : AppCompatActivity() {
-
+    /*
+    * THIS ACTIVITY HANDLES 10 QUESTIONS
+    * BASIC OUTLINE: TEXT VIEW (FOR STRING OF THE QUESTION), 5 RADIO BUTTONS (a-e). NEXT, PREVIOUS, SUBMIT BUTTONS
+    * THE BUTTONS' VISIBILITY ARE ALTERED SOMETIMES E.G: PREVIOUS IS GONE ON THE FIRST Q
+    * questionsArr IS AN ARRAY OF QUESTIONS, i MADE A KOTLIN CLASS CALLED QUESTION, CHECK IT OUT
+    *
+    *
+    *
+    *
+    * VERY IMMPORTANT
+    * THE WHEN PART (STARTING ON LIKE LINE 60) IS FOR QUESTION CHOOSING
+    * IN THE LAST ACTIVITY I SAID THE NUMBER CORRESPONDS TO THE TOPIC
+    * SO IF IT IS 0, THEN YOU SHOULD PICK QUESTIONS THAT ARE ARITHMATIC STUFF
+    * since i didnt do the data part im not sure how to integrate this into the code...
+    * make sure it is random!
+    *
+    *
+    *
+    * THE userAns is an array that holds the user answers (as numbers, 1 = a...)
+    *
+    *
+    * WHAT WE NEED
+    * i think you need to uncheck when it is checked and the user clicked next. not sure how to do that
+    * also when the user solved a problem, and goes back, there should be a textbox saying : oh you picked A
+    * like that would be nice
+    * */
     var questionNumber: Int = 0        //questionNumber keeps track of current Q, 0 is starting
     var score: Int = 0
     var questionsArr = Array(10, {i -> Question("","", "","","","",1)})
