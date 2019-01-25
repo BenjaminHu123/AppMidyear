@@ -21,18 +21,19 @@
         <TextView
                 android:text="@string/arithmetic_and_boolean_expressions"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/arith" android:textSize="18sp"
+                android:layout_height="match_parent" android:id="@+id/cate1" android:textSize="18sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
-                android:gravity="center_vertical|center_horizontal" android:layout_weight="1"/>
+                android:gravity="center_vertical|center_horizontal" android:layout_weight="1" android:clickable="true"
+                android:focusable="true"/>
         <TextView
                 android:text="@string/loops"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/loop"
+                android:id="@+id/cate2"
                 android:textSize="18sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:clickable="true" android:focusable="true"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -41,18 +42,19 @@
         <TextView
                 android:text="@string/arrays"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/arr" android:textSize="18sp"
+                android:layout_height="match_parent" android:id="@+id/cate3" android:textSize="18sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
-                android:gravity="center_vertical|center_horizontal" android:layout_weight="1"/>
+                android:gravity="center_vertical|center_horizontal" android:layout_weight="1" android:clickable="true"
+                android:focusable="true"/>
         <TextView
                 android:text="@string/arraylist"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/arrlst"
+                android:id="@+id/cate4"
                 android:textSize="18sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:clickable="true" android:focusable="true"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -62,18 +64,19 @@
         <TextView
                 android:text="@string/strings"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/str" android:textSize="18sp"
+                android:layout_height="match_parent" android:id="@+id/cate5" android:textSize="18sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
-                android:gravity="center_vertical|center_horizontal" android:layout_weight="1"/>
+                android:gravity="center_vertical|center_horizontal" android:layout_weight="1" android:clickable="true"
+                android:focusable="true"/>
         <TextView
                 android:text="@string/classes_interfaces_inheritance_polymorphism"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/inheritance"
+                android:id="@+id/cate6"
                 android:textSize="18sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:clickable="true" android:focusable="true"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -83,18 +86,19 @@
         <TextView
                 android:text="@string/fields_methods_and_parameter_passing"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/vars" android:textSize="14sp"
+                android:layout_height="match_parent" android:id="@+id/cate7" android:textSize="14sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
-                android:gravity="center_vertical|center_horizontal" android:layout_weight="1"/>
+                android:gravity="center_vertical|center_horizontal" android:layout_weight="1" android:clickable="true"
+                android:focusable="true"/>
         <TextView
                 android:text="@string/recursion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/recursion"
+                android:id="@+id/cate8"
                 android:textSize="18sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:clickable="true" android:focusable="true"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="match_parent"
@@ -104,17 +108,18 @@
         <TextView
                 android:text="@string/algorithim_and_big_o"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/efficiency" android:textSize="14sp"
+                android:layout_height="match_parent" android:id="@+id/cate9" android:textSize="14sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
-                android:gravity="center_vertical|center_horizontal" android:layout_weight="1"/>
+                android:gravity="center_vertical|center_horizontal" android:layout_weight="1" android:clickable="true"
+                android:focusable="true"/>
         <TextView
                 android:text="@string/search_and_sort"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/finding"
+                android:id="@+id/cate10"
                 android:textSize="18sp"
                 android:textColorLink="@color/colorPrimaryDark" android:textColor="@color/colorPrimary"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1"/>
+                android:layout_weight="1" android:clickable="true" android:focusable="true"/>
     </LinearLayout>
 </LinearLayout>

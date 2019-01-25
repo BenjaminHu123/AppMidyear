@@ -11,4 +11,5 @@
     <string name="classes_interfaces_inheritance_polymorphism">Classes, Interfaces, Inheritance, Polymorphism</string>
     <string name="search_and_sort">Search and Sort</string>
     <string name="apcs_quizlit">APCS QuizLit</string>
+    <string name="title_activity_result">Result</string>
 </resources>
