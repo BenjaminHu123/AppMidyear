@@ -39,8 +39,8 @@ class Questions : AppCompatActivity() {
     * */
     var questionNumber: Int = 0        //questionNumber keeps track of current Q, 0 is starting
     var score: Int = 0
-    var questionsArr = Array(10, {i -> Question("","", "","","","",1)})
-    var userAns = Array(10,{i -> 6})
+    var questionsArr = Array(10, {i -> Question("","", "","","","","1")})
+    var userAns = Array(10,{i -> ""})
     var chosen: RadioButton ?= null
 
     //creates a list of questions from question class
@@ -98,7 +98,22 @@ class Questions : AppCompatActivity() {
 
         next.setOnClickListener{
             chosen = radioGroup.findViewById(radioGroup.checkedRadioButtonId)
-            userAns[questionNumber] = radioGroup.indexOfChild(chosen)
+
+            if (radioGroup.indexOfChild(chosen) == 0) {
+                userAns[questionNumber] = "A"
+            }
+            else if (radioGroup.indexOfChild(chosen) == 1) {
+                userAns[questionNumber] = "B"
+            }
+            else if (radioGroup.indexOfChild(chosen) == 2) {
+                userAns[questionNumber] = "C"
+            }
+            else if (radioGroup.indexOfChild(chosen) == 3) {
+                userAns[questionNumber] = "D"
+            }
+            else if (radioGroup.indexOfChild(chosen) == 4) {
+                userAns[questionNumber] = "E"
+            }
 
             if(questionNumber + 1 < 10) {
                 questionNumber++
@@ -115,7 +130,7 @@ class Questions : AppCompatActivity() {
         }
         submit.setOnClickListener{
             for(i in questionsArr.indices){
-                if(questionsArr[i].correctAnswer == userAns[i])
+                if(questionsArr[i].correctAnswer.equals(userAns[i]))
                     score++
             }
             val intent = Intent(this@Questions,Result::class.java)

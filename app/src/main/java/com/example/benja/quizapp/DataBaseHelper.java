@@ -91,7 +91,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(num) }, null, null, null, null);
         if(cursor.moveToFirst()){
             do{
-                Question aQuestion = new Question(cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), 2);
+                Question aQuestion = new Question(cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8));
                 questionsList.add(aQuestion);
             } while(cursor.moveToNext());
         }
