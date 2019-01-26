@@ -6,4 +6,6 @@ class Question (var questionStr: String,
                 var choiceC: String,
                 var choiceD: String,
                 var choiceE: String,
-                var correctAnswer: Int) {}
+                var correctAnswer: Int){
+
+}
