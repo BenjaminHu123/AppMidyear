@@ -24,9 +24,11 @@ class Result : AppCompatActivity() {
         scoreBoard.text =  "Score: " + intent.getIntExtra("Score" , 1)
     }
 
-    fun tryagin(view: View) {
-        val intent = Intent(this@Result,Questions::class.java)
-        intent.putExtra("Category", (intent.getIntExtra("Category",0)))
+    fun tryagain(view: View) {
+        var intent = intent
+        val x : Int = intent.getIntExtra("Category",0)
+        intent = Intent(this@Result,Questions::class.java)
+        intent.putExtra("Category", x)
         startActivity(intent)
     }
 
