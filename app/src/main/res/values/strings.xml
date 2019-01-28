@@ -14,5 +14,5 @@
     <string name="title_activity_result">Result</string>
     <string name="Score">scoreSlot</string>
     <string name="menu">Menu</string>
-    <string name="try">Try Again?</string>
+    <string name="tryAgain">Try Again?</string>
 </resources>
