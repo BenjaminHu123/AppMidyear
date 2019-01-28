@@ -71,7 +71,6 @@ class Questions : AppCompatActivity() {
         ChoiceE = findViewById(R.id.choiceE)
 
         var intent = intent
-        var dummyvar : Int = 0
         when(intent.getIntExtra("Category",0)){
             0 -> questionsArr = dataBaseHelper.getQuestions(0)
             1 -> questionsArr = dataBaseHelper.getQuestions(1)
@@ -95,6 +94,9 @@ class Questions : AppCompatActivity() {
             if(submit.visibility == View.VISIBLE){
                 submit.visibility = View.GONE
             }
+            if(next.visibility == View.GONE){
+                next.visibility = View.VISIBLE
+            }
             if(questionNumber == 0){
                 prev.visibility = View.GONE
             }
@@ -103,24 +105,7 @@ class Questions : AppCompatActivity() {
         next.setOnClickListener{
             chosen = radioGroup.findViewById(radioGroup.checkedRadioButtonId)
             if (chosen != null)
-                userAns[questionNumber] = chosen!!.text.toString()
-            //    userAns[questionNumber] = (radioGroup.indexOfChild(chosen) + 64).toChar().toString()
-           /* if (radioGroup.indexOfChild(chosen) == 0) {
-                userAns[questionNumber] = "A"
-            }
-            else if (radioGroup.indexOfChild(chosen) == 1) {
-                userAns[questionNumber] = "B"
-            }
-            else if (radioGroup.indexOfChild(chosen) == 2) {
-                userAns[questionNumber] = "C"
-            }
-            else if (radioGroup.indexOfChild(chosen) == 3) {
-                userAns[questionNumber] = "D"
-            }
-            else if (radioGroup.indexOfChild(chosen) == 4) {
-                userAns[questionNumber] = "E"
-            }
-            */
+                userAns[questionNumber] = chosen!!.text.toString()//.substring(3)
             radioGroup.clearCheck()
 
             if(questionNumber + 1 < 10) {
@@ -137,9 +122,14 @@ class Questions : AppCompatActivity() {
             }
         }
         submit.setOnClickListener{
+            chosen = radioGroup.findViewById(radioGroup.checkedRadioButtonId)
+            if (chosen != null)
+                userAns[questionNumber] = chosen!!.text.toString()
+            radioGroup.clearCheck()
             for(i in questionsArr.indices){
-                if(questionsArr[i].correctAnswer == userAns[i])
+                if(questionsArr[i].correctAnswer == userAns[i]) {
                     score++
+                }
             }
             val intent = Intent(this@Questions,Result::class.java)
             intent.putExtra("Score",score)
@@ -148,12 +138,12 @@ class Questions : AppCompatActivity() {
     }
 
     private fun changeQText(Q: Question){
-        questionStr.text = Q.questionStr
-        choiceA.text = "A) " + Q.choiceA
-        choiceB.text = "B) " + Q.choiceB
-        choiceC.text = "C) " + Q.choiceC
-        choiceD.text = "D) " + Q.choiceD
-        choiceE.text = "E) " + Q.choiceE
+        questionStr.text = "Q" + (questionNumber + 1) + ") " + Q.questionStr
+        choiceA.text = Q.choiceA
+        choiceB.text = Q.choiceB
+        choiceC.text = Q.choiceC
+        choiceD.text = Q.choiceD
+        choiceE.text = Q.choiceE
         currentAns.text = "Your current answer is " + userAns[questionNumber]
     }
 }
