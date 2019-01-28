@@ -43,7 +43,6 @@ class Questions : AppCompatActivity() {
     private var userAns = Array(10,{i -> ""})
     var chosen: RadioButton ?= null
     var dataBaseHelper: DataBaseHelper = DataBaseHelper(this)
-    var categoryNum = 0
 
     //creates a list of questions from question class
     //userAns is an array of what the user chose as the answer
@@ -72,13 +71,7 @@ class Questions : AppCompatActivity() {
         ChoiceE = findViewById(R.id.choiceE)
 
         var intent = intent
-<<<<<<< HEAD
         when(intent.getIntExtra("Category",0)){
-=======
-        var dummyvar : Int = 0
-        categoryNum = intent.getIntExtra("Category", 0)
-        when(categoryNum){
->>>>>>> 76c090862d68857d998c2a23a9c5b240234a2a2c
             0 -> questionsArr = dataBaseHelper.getQuestions(0)
             1 -> questionsArr = dataBaseHelper.getQuestions(1)
             2 -> questionsArr = dataBaseHelper.getQuestions(2)
@@ -140,7 +133,6 @@ class Questions : AppCompatActivity() {
             }
             val intent = Intent(this@Questions,Result::class.java)
             intent.putExtra("Score",score)
-            intent.putExtra("Category", categoryNum)
             startActivity(intent)
         }
     }

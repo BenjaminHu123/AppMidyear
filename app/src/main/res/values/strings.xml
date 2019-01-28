@@ -12,7 +12,4 @@
     <string name="search_and_sort">Search and Sort</string>
     <string name="apcs_quizlit">APCS QuizLit</string>
     <string name="title_activity_result">Result</string>
-    <string name="Score">scoreSlot</string>
-    <string name="menu">Menu</string>
-    <string name="tryAgain">Try Again?</string>
 </resources>

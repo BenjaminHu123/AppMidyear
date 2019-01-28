@@ -9,17 +9,7 @@
         android:orientation="vertical">
 
     <TextView
-            android:text="@string/Score"
+            android:text="TextView"
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:textSize="32sp"
-            android:layout_height="366dp" android:id="@+id/scoreSlot"/>
-    <Button
-            android:text="@string/tryAgain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/button2" android:onClick="tryagain"/>
-    <Button
-            android:text="@string/menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/button" android:onClick="returnToMenu"/>
+            android:layout_height="wrap_content" android:id="@+id/scoreSlot"/>
 </LinearLayout>
