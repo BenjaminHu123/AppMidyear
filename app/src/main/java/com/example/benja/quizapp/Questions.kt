@@ -37,20 +37,22 @@ class Questions : AppCompatActivity() {
     * also when the user solved a problem, and goes back, there should be a textbox saying : oh you picked A
     * like that would be nice
     * */
-    var questionNumber: Int = 0        //questionNumber keeps track of current Q, 0 is starting
-    var score: Int = 0
-    var questionsArr = Array(10, {i -> Question("","", "","","","","1")})
-    var userAns = Array(10,{i -> ""})
+    private var questionNumber: Int = 0        //questionNumber keeps track of current Q, 0 is starting
+    private var score: Int = 0
+    private var questionsArr = Array(10, {i -> Question("","", "","","","","1")})
+    private var userAns = Array(10,{i -> ""})
     var chosen: RadioButton ?= null
+    var dataBaseHelper: DataBaseHelper = DataBaseHelper(this)
 
     //creates a list of questions from question class
     //userAns is an array of what the user chose as the answer
-    lateinit var questionStr : TextView
-    lateinit var ChoiceA : RadioButton
-    lateinit var ChoiceB : RadioButton
-    lateinit var ChoiceC : RadioButton
-    lateinit var ChoiceD : RadioButton
-    lateinit var ChoiceE : RadioButton
+    private lateinit var questionStr : TextView
+    private lateinit var currentAns : TextView
+    private lateinit var ChoiceA : RadioButton
+    private lateinit var ChoiceB : RadioButton
+    private lateinit var ChoiceC : RadioButton
+    private lateinit var ChoiceD : RadioButton
+    private lateinit var ChoiceE : RadioButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,7 @@ class Questions : AppCompatActivity() {
         val submit = findViewById<Button>(R.id.submit)
         val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
         questionStr = findViewById(R.id.question)
+        currentAns = findViewById(R.id.CurrentAns)
         ChoiceA = findViewById(R.id.choiceA)
         ChoiceB = findViewById(R.id.choiceB)
         ChoiceC = findViewById(R.id.choiceC)
@@ -70,18 +73,19 @@ class Questions : AppCompatActivity() {
         var intent = intent
         var dummyvar : Int = 0
         when(intent.getIntExtra("Category",0)){
-            0 -> {dummyvar = 0}
-            1 -> dummyvar = 1
-            2 -> dummyvar = 2
-            3 -> dummyvar = 3
-            4 -> dummyvar = 4
-            5 -> dummyvar = 5
-            6 -> dummyvar = 6
-            7 -> dummyvar = 7
-            8 -> dummyvar = 8
-            9 -> dummyvar = 9
+            0 -> questionsArr = dataBaseHelper.getQuestions(0)
+            1 -> questionsArr = dataBaseHelper.getQuestions(1)
+            2 -> questionsArr = dataBaseHelper.getQuestions(2)
+            3 -> questionsArr = dataBaseHelper.getQuestions(3)
+            4 -> questionsArr = dataBaseHelper.getQuestions(4)
+            5 -> questionsArr = dataBaseHelper.getQuestions(5)
+            6 -> questionsArr = dataBaseHelper.getQuestions(6)
+            7 -> questionsArr = dataBaseHelper.getQuestions(7)
+            8 -> questionsArr = dataBaseHelper.getQuestions(8)
+            9 -> questionsArr = dataBaseHelper.getQuestions(9)
         }
 
+        changeQText(questionsArr[0])
         prev.setOnClickListener{
             if(questionNumber - 1 >= 0) {
                 questionNumber--
@@ -98,8 +102,10 @@ class Questions : AppCompatActivity() {
 
         next.setOnClickListener{
             chosen = radioGroup.findViewById(radioGroup.checkedRadioButtonId)
-
-            if (radioGroup.indexOfChild(chosen) == 0) {
+            if (chosen != null)
+                userAns[questionNumber] = chosen!!.text.toString()
+            //    userAns[questionNumber] = (radioGroup.indexOfChild(chosen) + 64).toChar().toString()
+           /* if (radioGroup.indexOfChild(chosen) == 0) {
                 userAns[questionNumber] = "A"
             }
             else if (radioGroup.indexOfChild(chosen) == 1) {
@@ -114,6 +120,8 @@ class Questions : AppCompatActivity() {
             else if (radioGroup.indexOfChild(chosen) == 4) {
                 userAns[questionNumber] = "E"
             }
+            */
+            radioGroup.clearCheck()
 
             if(questionNumber + 1 < 10) {
                 questionNumber++
@@ -130,7 +138,7 @@ class Questions : AppCompatActivity() {
         }
         submit.setOnClickListener{
             for(i in questionsArr.indices){
-                if(questionsArr[i].correctAnswer.equals(userAns[i]))
+                if(questionsArr[i].correctAnswer == userAns[i])
                     score++
             }
             val intent = Intent(this@Questions,Result::class.java)
@@ -139,12 +147,13 @@ class Questions : AppCompatActivity() {
         }
     }
 
-    fun changeQText(Q: Question){
+    private fun changeQText(Q: Question){
         questionStr.text = Q.questionStr
-        choiceA.text = Q.choiceA
-        choiceB.text = Q.choiceB
-        choiceC.text = Q.choiceC
-        choiceD.text = Q.choiceD
-        choiceE.text = Q.choiceE
+        choiceA.text = "A) " + Q.choiceA
+        choiceB.text = "B) " + Q.choiceB
+        choiceC.text = "C) " + Q.choiceC
+        choiceD.text = "D) " + Q.choiceD
+        choiceE.text = "E) " + Q.choiceE
+        currentAns.text = "Your current answer is " + userAns[questionNumber]
     }
 }

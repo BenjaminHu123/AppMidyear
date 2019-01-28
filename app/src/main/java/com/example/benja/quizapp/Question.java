@@ -1,4 +1,4 @@
-package com.example.benja.quizapp;
+/*package com.example.benja.quizapp;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -120,3 +120,4 @@ public class Question implements Parcelable {
         }
     };
 }
+*/

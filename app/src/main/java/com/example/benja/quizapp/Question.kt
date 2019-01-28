@@ -1,4 +1,4 @@
-/**package com.example.benja.quizapp
+package com.example.benja.quizapp
 
 class Question (var questionStr: String,
                 var choiceA: String,
@@ -7,4 +7,3 @@ class Question (var questionStr: String,
                 var choiceD: String,
                 var choiceE: String,
                 var correctAnswer: String)
- */

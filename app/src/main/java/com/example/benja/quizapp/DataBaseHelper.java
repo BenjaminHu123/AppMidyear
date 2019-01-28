@@ -33,7 +33,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VER);
         dbContext = context;
-        context.deleteDatabase(DATABASE_NAME);
+        //context.deleteDatabase(DATABASE_NAME);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return TABLE_SUBJECT;
     }
 
-    public List<Question> getQuestions(int num){
+    /*public List<Question> getQuestions(int num){
         List<Question> questionsList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, new String[] { TABLE_ID, TABLE_SUBJECT,
@@ -93,6 +93,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             do{
                 Question aQuestion = new Question(cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8));
                 questionsList.add(aQuestion);
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+        return questionsList;
+    }*/
+    public Question[] getQuestions(int num){
+        Question[] questionsList = new Question[10];
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, new String[] { TABLE_ID, TABLE_SUBJECT,
+                        TABLE_QUESTION, TABLE_C1, TABLE_C2, TABLE_C3, TABLE_C4, TABLE_C5, TABLE_CORRECT}, TABLE_SUBJECT + "=?",
+                new String[] { String.valueOf(num) }, null, null, null, null);
+        int x = 0;
+        if(cursor.moveToFirst()){
+            do{
+                Question aQuestion = new Question(cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8));
+                questionsList[x] = aQuestion;
+                x++;
             } while(cursor.moveToNext());
         }
         cursor.close();
