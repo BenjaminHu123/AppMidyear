@@ -72,13 +72,8 @@ class Questions : AppCompatActivity() {
         ChoiceE = findViewById(R.id.choiceE)
 
         var intent = intent
-<<<<<<< HEAD
-        when(intent.getIntExtra("Category",0)){
-=======
-        var dummyvar : Int = 0
         categoryNum = intent.getIntExtra("Category", 0)
         when(categoryNum){
->>>>>>> 76c090862d68857d998c2a23a9c5b240234a2a2c
             0 -> questionsArr = dataBaseHelper.getQuestions(0)
             1 -> questionsArr = dataBaseHelper.getQuestions(1)
             2 -> questionsArr = dataBaseHelper.getQuestions(2)
@@ -101,18 +96,17 @@ class Questions : AppCompatActivity() {
             if(submit.visibility == View.VISIBLE){
                 submit.visibility = View.GONE
             }
-            if(next.visibility == View.GONE){
-                next.visibility = View.VISIBLE
-            }
             if(questionNumber == 0){
                 prev.visibility = View.GONE
             }
+            if(next.visibility == View.GONE)
+                next.visibility = View.VISIBLE
         }
 
         next.setOnClickListener{
             chosen = radioGroup.findViewById(radioGroup.checkedRadioButtonId)
             if (chosen != null)
-                userAns[questionNumber] = chosen!!.text.toString()//.substring(3)
+                userAns[questionNumber] = chosen!!.text.toString()
             radioGroup.clearCheck()
 
             if(questionNumber + 1 < 10) {
@@ -134,9 +128,8 @@ class Questions : AppCompatActivity() {
                 userAns[questionNumber] = chosen!!.text.toString()
             radioGroup.clearCheck()
             for(i in questionsArr.indices){
-                if(questionsArr[i].correctAnswer == userAns[i]) {
+                if(questionsArr[i].correctAnswer == userAns[i])
                     score++
-                }
             }
             val intent = Intent(this@Questions,Result::class.java)
             intent.putExtra("Score",score)
@@ -146,7 +139,7 @@ class Questions : AppCompatActivity() {
     }
 
     private fun changeQText(Q: Question){
-        questionStr.text = "Q" + (questionNumber + 1) + ") " + Q.questionStr
+        questionStr.text = "Q" + (questionNumber + 1) + ") " +  Q.questionStr
         choiceA.text = Q.choiceA
         choiceB.text = Q.choiceB
         choiceC.text = Q.choiceC
