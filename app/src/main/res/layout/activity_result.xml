@@ -9,7 +9,15 @@
         android:orientation="vertical">
 
     <TextView
-            android:text="TextView"
+            android:text="@string/Score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/scoreSlot"/>
+    <Button
+            android:text="@string/menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/button"/>
+    <Button
+            android:text="@string/try"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/button2"/>
 </LinearLayout>
