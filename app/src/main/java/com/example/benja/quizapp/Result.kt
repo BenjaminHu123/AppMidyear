@@ -20,8 +20,19 @@ class Result : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
         val scoreBoard = findViewById<TextView>(R.id.scoreSlot)
+        val qwrong = findViewById<TextView>(R.id.Qwrong)
         var intent = intent
         scoreBoard.text =  "Score: " + intent.getIntExtra("Score" , 1)
+        val questions = intent.getStringArrayListExtra("Questions")
+        val corrections = intent.getStringArrayListExtra("Corrections")
+        val userAns = intent.getStringArrayListExtra("userAns")
+        var str = ""
+        for(i in questions.indices){
+            str += ("Question: " + questions.get(i) + "\n\n"
+                    + "Correct Answer: " + corrections.get(i) +
+                    "\nYour Answer: " + userAns.get(i) + "\n\n")
+        }
+        qwrong.text = adjustString(str)
     }
 
     fun tryagain(view: View) {
@@ -35,5 +46,10 @@ class Result : AppCompatActivity() {
     fun returnToMenu(view: View) {
         val intent = Intent(this, Category::class.java)
         startActivity(intent)
+    }
+    private fun adjustString(str : String):String{
+        return str.replace("\\n","\n")
+            .replace("\\t","\t")
+            .replace("\\" + "\"","\"")
     }
 }

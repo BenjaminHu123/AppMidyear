@@ -13,7 +13,16 @@
             android:layout_width="match_parent"
             android:gravity="center"
             android:textSize="32sp"
-            android:layout_height="366dp" android:id="@+id/scoreSlot"/>
+            android:layout_height="wrap_content" android:id="@+id/scoreSlot"/>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_weight="1">
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/Qwrong" android:textSize="18sp"
+                android:layout_margin="15dp"/>
+    </ScrollView>
     <Button
             android:text="@string/tryAgain"
             android:layout_width="match_parent"

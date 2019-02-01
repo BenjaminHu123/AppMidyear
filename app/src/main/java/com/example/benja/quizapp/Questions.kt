@@ -9,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_questions.*
+import java.util.*
 
 class Questions : AppCompatActivity() {
     /*
@@ -85,7 +86,7 @@ class Questions : AppCompatActivity() {
             8 -> questionsArr = dataBaseHelper.getQuestions(8)
             9 -> questionsArr = dataBaseHelper.getQuestions(9)
         }
-
+        randomizeArray()
         changeQText(questionsArr[0])
         prev.setOnClickListener{
             if(questionNumber - 1 >= 0) {
@@ -101,8 +102,8 @@ class Questions : AppCompatActivity() {
             }
             if(next.visibility == View.GONE)
                 next.visibility = View.VISIBLE
+            radioGroup.clearCheck()
         }
-
         next.setOnClickListener{
             chosen = radioGroup.findViewById(radioGroup.checkedRadioButtonId)
             if (chosen != null)
@@ -127,24 +128,49 @@ class Questions : AppCompatActivity() {
             if (chosen != null)
                 userAns[questionNumber] = chosen!!.text.toString()
             radioGroup.clearCheck()
+            var wrongQuestions = arrayListOf<String>()
+            var corrections = arrayListOf<String>()
+            var userChoices = arrayListOf<String>()
             for(i in questionsArr.indices){
                 if(questionsArr[i].correctAnswer == userAns[i])
                     score++
+                else {
+                    wrongQuestions.add(questionsArr[i].questionStr)
+                    corrections.add(questionsArr[i].correctAnswer)
+                    userChoices.add(userAns[i])
+                }
             }
             val intent = Intent(this@Questions,Result::class.java)
             intent.putExtra("Score",score)
             intent.putExtra("Category", categoryNum)
+            intent.putStringArrayListExtra("Questions",wrongQuestions)
+            intent.putStringArrayListExtra("Corrections", corrections)
+            intent.putStringArrayListExtra("userAns", userChoices)
             startActivity(intent)
         }
     }
 
     private fun changeQText(Q: Question){
-        questionStr.text = "Q" + (questionNumber + 1) + ") " +  Q.questionStr
-        choiceA.text = Q.choiceA
-        choiceB.text = Q.choiceB
-        choiceC.text = Q.choiceC
-        choiceD.text = Q.choiceD
-        choiceE.text = Q.choiceE
+        questionStr.text = adjustString("Q" + (questionNumber + 1) + ") " +  Q.questionStr)
+        choiceA.text = adjustString(Q.choiceA)
+        choiceB.text = adjustString(Q.choiceB)
+        choiceC.text = adjustString(Q.choiceC)
+        choiceD.text = adjustString(Q.choiceD)
+        choiceE.text = adjustString(Q.choiceE)
         currentAns.text = "Your current answer is " + userAns[questionNumber]
+    }
+    private fun adjustString(str : String):String{
+        return str.replace("\\n","\n")
+            .replace("\\t","\t")
+            .replace("\\" + "\"","\"")
+    }
+    private  fun randomizeArray(){
+        val list = mutableListOf<Question>()
+        for(i in questionsArr.indices) {
+            list.add(questionsArr[i])
+        }
+        for(i in questionsArr.indices){
+            questionsArr[i] = list.removeAt(Random().nextInt((list.size) - 0) + 0)
+        }
     }
 }
